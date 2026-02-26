@@ -1,0 +1,136 @@
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco Digital Gabriel</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #6a00f4, #9d4edd);
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .btn-header {
+        background: white;
+        color: #6a00f4;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn-header:hover {
+        background: #e0e0e0;
+    }
+
+    .hero {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+
+    .btn-primary {
+        background: white;
+        color: #6a00f4;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #e0e0e0;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    @media (max-width: 600px) {
+        .hero h2 {
+            font-size: 28px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Banco Digital</h1>
+    <button class="btn-header" onclick="irLogin()">Entrar</button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Seu dinheiro, do seu jeito.</h2>
+        <p>Conta digital gratuita, transferências instantâneas e controle total pelo seu sistema.</p>
+        <button class="btn-primary" onclick="irCadastro()">Criar Conta</button>
+        <button class="btn-primary" onclick="irLogin()">Já tenho conta</button>
+    </div>
+</section>
+
+<footer>
+    © 2026 Banco Digital — Projeto Full Stack em Java
+</footer>
+
+<script>
+    function irLogin() {
+        window.location.href = "Login.html";
+    }
+
+    function irCadastro() {
+        window.location.href = "Cadastro.html";
+    }
+</script>
+
+</body>
+</html>

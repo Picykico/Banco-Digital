@@ -1,0 +1,15 @@
+# Arquivos compilados
+*.class
+
+# Banco de dados
+*.db
+
+# Pastas de built
+build/
+dist/
+
+# Dependencias 
+libs/
+
+# Logs
+*.log

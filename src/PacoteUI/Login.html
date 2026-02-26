@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Banco Digital</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: linear-gradient(135deg, #6a00f4, #9d4edd);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .card {
+                background: white;
+                padding: 40px;
+                border-radius: 12px;
+                width: 320px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            }
+
+            h2 {
+                margin-bottom: 20px;
+                color: #6a00f4;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                margin: 8px 0;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px;
+                margin-top: 10px;
+                border: none;
+                border-radius: 25px;
+                background: #6a00f4;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            button:hover {
+                background: #5600c9;
+            }
+
+            .voltar {
+                background: #ccc;
+                color: black;
+            }
+
+            .voltar:hover {
+                background: #aaa;
+            }
+
+            #mensagem {
+                margin-top: 15px;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="card">
+            <h2>Entrar</h2>
+
+            <input type="text" id="cpf" placeholder="CPF">
+            <input type="password" id="senha" placeholder="Senha">
+            <input type="password" id="senha4" placeholder="Senha 4 dígitos">
+
+            <button onclick="login()">Entrar</button>
+            <button class="voltar" onclick="voltar()">Voltar para a tela inicial</button>
+
+            <div id="mensagem"></div>
+        </div>
+
+        <script>
+            function voltar() {
+                window.location.href = "index.html";
+            }
+
+            function login() {
+                const cpf = document.getElementById("cpf").value;
+                const senha = document.getElementById("senha").value;
+                const senha4 = document.getElementById("senha4").value;
+
+                fetch("/login", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({cpf, senha, senha4})
+                })
+                        .then(res => res.json())
+                        .then(data => {
+                            const msg = document.getElementById("mensagem");
+                            if (data.status === "ok") {
+                                msg.style.color = "green";
+                                msg.innerText = "Login realizado!";
+                            } else {
+                                msg.style.color = "red";
+                                msg.innerText = data.msg;
+                            }
+                        })
+                        .catch(() => {
+                            document.getElementById("mensagem").innerText =
+                                    "Erro de conexão com servidor";
+                        });
+            }
+        </script>
+
+    </body>
+</html>
